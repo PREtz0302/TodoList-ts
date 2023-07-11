@@ -1,14 +1,11 @@
 import {
     createContext,
     Dispatch,
-    FC,
-    ReactNode,
     SetStateAction,
     useContext,
     useState,
   } from "react";
   import "./App.css";
-import { JsxElement } from "typescript";
   
 interface ContextProps {
     children: JSX.Element | JSX.Element[]

@@ -19,7 +19,7 @@ export const TodoList = ({taskList, setTaskList, setShow} : {taskList:Task[], se
         }))
     }
 
-    const hogehoge = useSetTodoValue();
+    const setTodo = useSetTodoValue();
     
 
     return(
@@ -32,7 +32,7 @@ export const TodoList = ({taskList, setTaskList, setShow} : {taskList:Task[], se
                     // taskList配列をmap関数で取り出すループ構造
                     <div className={`todo ${task.completed ?"completed" : ""}`} key={index}>
                         <div className = "todoText" onClick = {() => {
-                            hogehoge(task.text);
+                            setTodo(task.text);
                             setShow(true);
                             }}>
                             <span>

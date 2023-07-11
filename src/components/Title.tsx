@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Title = () => {
   return (
     // cssから設定するためにclassNameつけた

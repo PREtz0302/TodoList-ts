@@ -4,7 +4,7 @@ import{TodoList} from './components/TodoList';
 import "./App.css"
 import { Modal } from './components/Modal';
 import {TodoProvider} from './context';
-import React, { createContext, FC, useState, Dispatch, SetStateAction, useContext, ReactNode } from 'react';
+import { useState } from 'react';
 
 export type Task = {
   id:number,
@@ -24,11 +24,10 @@ export function App() {
 
   return(
     <div className = "body">
+    <Title />
+    <InputForm taskList={taskList} setTaskList={setTaskList} />
       <TodoProvider>
-        <Title />
-        <InputForm taskList={taskList} setTaskList={setTaskList} />
        <TodoList taskList={taskList} setTaskList={setTaskList} setShow={setShow}/>
-       {/* ~~.jsx */}
         <Modal show={show} setShow={setShow}/>
       </TodoProvider>
     </div>
