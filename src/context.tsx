@@ -8,19 +8,24 @@ import {
     useState,
   } from "react";
   import "./App.css";
+import { JsxElement } from "typescript";
   
+interface ContextProps {
+    children: JSX.Element | JSX.Element[]
+}
+
   const todoContext = createContext<string>("");
   const setTodoContext = createContext<Dispatch<SetStateAction<string>>>(
     () => undefined
   );
   
-  const TodoProvider: FC<ReactNode> = (children:ReactNode) => {
+  export const TodoProvider = (props:ContextProps):JSX.Element => {
     const [todo, setTodo] = useState<string>("");
   
     return (
       <todoContext.Provider value={todo}>
         <setTodoContext.Provider value={setTodo}>
-          {children}
+          {props.children}
         </setTodoContext.Provider>
       </todoContext.Provider>
     );
