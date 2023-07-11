@@ -1,8 +1,8 @@
-import React from 'react';
+import {Dispatch, SetStateAction} from 'react';
 import {Task} from '../App';
-import {App} from '../App';
+import { useSetTodoValue } from '../context';
 
-export const TodoList = ({taskList, setTaskList} : {taskList:Task[], setTaskList:React.Dispatch<React.SetStateAction<Task[]>>}) =>{
+export const TodoList = ({taskList, setTaskList, setShow} : {taskList:Task[], setTaskList:Dispatch<SetStateAction<Task[]>>, setShow:Dispatch<SetStateAction<boolean>>}) =>{
     const handleDelete = (id:number) =>{
         setTaskList(taskList.filter((task) =>task.id !== id));
     }
@@ -24,11 +24,16 @@ export const TodoList = ({taskList, setTaskList} : {taskList:Task[], setTaskList
             <div className="todos">
                 {/* ここのtodos divいる？ */}
                 {taskList.map((task, index) =>{
+                     
                     return(
                     // taskList配列をmap関数で取り出すループ構造
                     <div className={`todo ${task.completed ?"completed" : ""}`} key={index}>
-                        <div className = "todoText">
-                            <span>{task.text}</span>
+                        <div className = "todoText" onClick = {() => {
+                            setShow(true);
+                            }}>
+                            <span>
+                                {task.text}
+                            </span>
                         </div>
                         <div className="icons">
                             <button onClick={() => handleCompleted(task.id)}>
